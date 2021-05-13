@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" >
+        <title>AVRL-TEST</title>
+        <style media="screen">
+
+            .container {
+                height: 0px;
+                display: flex;
+                margin-top: 150px;
+                border: black;
+                border-radius: 10px;
+                border-color: black;
+                align-items: center;
+                justify-content: center;
+                background-color: white;
+            }
+
+            .equalizer {
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                height: 16em;
+                margin-top: 15em;
+                width: 50em;
+                background-color: black;
+                padding: 0.5rem;
+            }
+
+            #bar1 {
+                display: inline-block;
+                width: 100em;
+                background-color: #9051e2;
+            }
+
+            #bar2 {
+                display: inline-block;
+                width: 100em;
+                background-color: #c351c9;
+            }
+
+            #bar3 {
+                display: inline-block;
+                width: 100em;
+                background-color: #E94B3cff;
+            }
+
+            #bar4 {
+                display: inline-block;
+                width: 100em;
+                background-color: #de8f4e;
+            }
+
+            #bar5 {
+                display: inline-block;
+                width: 100em;
+                background-color: #fcfc68;
+            }
+
+            #start {
+                height: 2rem;
+                width: 5rem; 
+                text-align: center;
+                border: black;
+                background-color: green;
+                color: #fff;
+                font-family:sans-serif;    
+                margin-left: 25rem;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+            #stop {
+                height: 2rem;
+                border-radius: 5px;
+                width: 5rem; 
+                text-align: center;
+                border: black;
+                background-color: red;
+                color: #fff;
+                font-family:sans-serif;  
+                margin-left: 15rem;
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+            .btn-class {
+                height: 10px;
+                padding: 0.8rem;
+                background-color: white;
+                margin: 20rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="equalizer">
+                <div id="bar1"></div>
+                <div id="bar2"></div>
+                <div id="bar3"></div>
+                <div id="bar4"></div>
+                <div id="bar5"></div>
+            </div>
+        </div>
+
+            <div class="btn-class">
+
+            <button id="start">Start</button>
+            <button id="stop">Stop</button> 
+
+            </div>
+            
+
+            <script>
+
+                document.getElementById("start").addEventListener("click", begin);
+                document.getElementById("stop").addEventListener("click", halt);
+
+
+                function begin()
+                {
+                animate(document.getElementById('bar1'), [10, 111, 31, 250]);
+                animate(document.getElementById('bar2'), [20, 25, 1, 250]);
+                animate(document.getElementById('bar3'), [127, 20, 25, 100]);
+                animate(document.getElementById('bar4'), [11, 10, 115, 195]);
+                animate(document.getElementById('bar5'), [128, 50, 10, 35]);
+                
+                function animate(element, heights) {
+                    let currentHeight = 0;
+                    let loop = 0;
+
+                    setInterval(function () {
+
+                        if (currentHeight === heights[loop])
+                        {
+                            loop++;
+
+                            if (!heights[loop]) 
+                            {
+                                loop = 0;
+                            }
+                        } 
+                        else 
+                        {
+                            if (currentHeight > heights[loop]) 
+                            {
+                                currentHeight--;
+                            } else 
+                            {
+                                currentHeight++;
+                            }
+
+                            element.style.height = currentHeight + 'px';
+                        }
+                    
+                
+                    }, 5);
+            }
+    }
+
+            
+            function halt()
+            {
+                return;
+            }
+
+        
+            </script>
+    </body>
+</html>
